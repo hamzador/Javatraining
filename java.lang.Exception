@@ -1,0 +1,19 @@
+public class Solution {
+
+	
+		static int B,H;
+		static boolean flag=true;
+		// code here not yet solved
+
+		public static void main(String[] args){
+				if(flag){
+					int area=B*H;
+					System.out.print(area);
+				}
+				else {
+					System.out.println("java.lang.Exception: Breadth and height must be positive");
+				}
+				
+			}//end of main
+
+		}//end of clas
