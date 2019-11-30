@@ -1,0 +1,97 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class anagrams {
+
+	
+	//without using Array function in hackerRank
+	public static boolean checkAnagram(String s1, String s2)
+	{
+		// Remove all the white space and convert to lower case
+		s1 = s1.replaceAll("\\s", "").toLowerCase();
+		s2 = s2.replaceAll("\\s", "").toLowerCase();
+
+		// Check length of both strings
+		if (s1.length() != s2.length())
+			return false;
+		else
+		{
+			for (int i = 0; i < s1.length(); i++)
+			{
+				for (int j = 0; j < s2.length(); j++)
+				{
+					if (s1.charAt(i) == s2.charAt(j))
+					{
+						s2 = s2.substring(0, j) + s2.substring(j + 1);
+						break;
+					}
+				}
+			}
+
+			if (s2.length() == 0)
+			{
+				return true;
+			} else
+			{
+				return false;
+			}
+		}
+	}
+// with array function 
+static boolean isAnagram(String a, String b) {
+	boolean res=true;
+	
+
+    // Get lengths of both strings 
+    int lenA=a.length();
+    int lenB=b.length();
+    
+    // change to lower case 
+    char tempArrayA[] = a.toLowerCase().toCharArray();
+    char tempArrayB[]= b.toLowerCase().toCharArray();
+    
+    //sort of both arrays
+    Arrays.sort(tempArrayA); 
+    Arrays.sort(tempArrayB);
+    
+    System.out.println("a sorted "+new String(tempArrayA));
+    System.err.println("b sorted "+new String(tempArrayB));
+    
+    if(lenA==lenB){//if length of A != of length of B
+    	for (int i = 0; i < lenA; i++) 
+            if (tempArrayA[i] != tempArrayB[i]) 
+                res= false;              	
+    }
+    else{
+        res=false;
+    }
+    return res;
+}
+
+
+
+
+
+
+
+//************ Remove all the white space****************  for more information the link bellow
+		/*https://javarevisited.blogspot.com/2017/01/string-replaceall-example-how-to-replace-all-characters-and-substring.html*/
+		
+
+
+
+
+
+
+    public static void main(String[] args) {
+        
+        Scanner scan = new Scanner(System.in);
+        String a = scan.next();
+        String b = scan.next();
+        scan.close();
+        //boolean ret = isAnagram(a, b);
+        boolean ret = checkAnagram(a, b);
+        System.out.println( (ret) ? "Anagrams" : "Not Anagrams" );
+   
+}
+}
